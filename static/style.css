@@ -23,8 +23,3 @@ div.name {
 div.ranko {
   float: left;
 }
-
-img[src*="linkedin"] {
-  padding: 0 0 0 0;
-  padding-left: 400px;
-}
