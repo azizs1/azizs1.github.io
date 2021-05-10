@@ -5,8 +5,7 @@ p {
   font-size:150px;
 }
 
-/* div.outer {
-  float: right;
-  position: relative;
-  right: 50%;
-} */
+div.name {
+  padding-top: 50px;
+  padding-right: 100px;
+}
