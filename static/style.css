@@ -1,0 +1,29 @@
+p {
+  text-align: right;
+  color: white;
+  font-family: arial;
+  font-size: 150px;
+  overflow: hidden;
+  margin: 0 !important;
+}
+
+body {
+  background-color: black;
+  overflow: hidden;
+}
+
+div.name {
+  padding-top: 20px;
+  padding-right: 200px;
+  padding-bottom: 50px;
+  float: right;
+}
+
+div.ranko {
+  float: left;
+}
+
+img[src*="linkedin"] {
+  padding: 0 0 0 0;
+  padding-left: 400px;
+}
