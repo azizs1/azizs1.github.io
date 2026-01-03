@@ -11,11 +11,7 @@
     <div class="ranko">
       <img src="./static/ranko-big.png" alt="RANKOOOOOO">
     </div>
-    <div class="hamburger" id="hamburger">☰</div>
-    <nav class="menu" id="menu">
-      <a href="/distracted-driver-detection">Distracted Driver Detection</a>
-      <a href="/wildfires-energy-infra-impact">Wildire Spread & Energy Infra Impact</a>
-    </nav>
+
     <div class="name">
       <b>
         <p>aziz<br>عزیز<br>అజిజ్</p>
@@ -29,11 +25,53 @@
         </a>
       </div>
     </div>
+
+    <div class="projects-panel" id="projectsPanel">
+      <h2>In Progress</h2>
+      <div class="projects-grid">
+        <div class="project-card" data-url="https://github.com/azizs1/beamng-autodrive">
+          <h3>BeamNG Autodrive</h3>
+          <p>Building an AV pipeline to autonomously drive a vehicle in BeamNG.</p>
+        </div>
+      </div>
+
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card" data-url="/distracted-driver-detection" data-image="./project_imgs/distracted_driver.png">
+          <h3>Distracted Driver Detection</h3>
+          <p>Using deep learning and optical flow analysis methods to detect driver distraction state.</p>
+        </div>
+
+        <div class="project-card" data-url="/wildfires-energy-infra-impact" data-image="./project_imgs/ca_wildfires.png">
+          <h3>Wildfire Spread & Energy Infra Impact in CA</h3>
+          <p>Using urban computing techniques to model the spread of wildfires in Califonia and assess risk to energy infrastructure.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-tab" id="projectsTab">
+      <span>Projects</span>
+    </div>
+
     <script>
-      const hamburger = document.getElementById('hamburger');
-      const menu = document.getElementById('menu');
-      hamburger.addEventListener('click', () => {
-        menu.classList.toggle('open');
+      const projectsTab = document.getElementById('projectsTab');
+      const projectsPanel = document.getElementById('projectsPanel');
+
+      projectsTab.addEventListener('click', () => {
+        const isOpen = projectsPanel.classList.toggle('open');
+        projectsTab.textContent = isOpen ? "Home" : "Projects";
+      });
+
+      document.querySelectorAll('.project-card').forEach(card => {
+        const img = card.getAttribute('data-image'); 
+        if (img) { 
+          card.style.setProperty('--card-image', `url(${img})`); 
+        }
+
+        card.addEventListener('click', () => {
+          const url = card.getAttribute('data-url');
+          if (url) window.location.href = url;
+        });
       });
     </script>
   </body>

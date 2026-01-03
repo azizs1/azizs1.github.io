@@ -1,3 +1,7 @@
+:root {
+  --ranko-width: 33.33vw;
+}
+
 p {
   text-align: right;
   color: white;
@@ -15,19 +19,24 @@ body {
 }
 
 .ranko {
-  flex: 0 0 200px;
-  background: url('/static/ranko-big.png') no-repeat center center;
-  background-size: cover;
+  width: var(--ranko-width);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ranko img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .name {
-  flex: 1;
+  width: calc(100vw-var(--ranko-width));
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   justify-content: center;
-  padding: 20px;
-  padding-right: 10rem;
+  align-items: flex-end;
+  padding-right: 12rem;
 }
 
 .name a img {
@@ -40,65 +49,138 @@ body {
   transform: scale(1.1);
 }
 
-.hamburger {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-.menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 0;
-  background: rgba(0,0,0,0.9);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.3s ease;
-  z-index: 999;
-  font-family: Arial, sans-serif;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.5rem;
-  margin: 1rem;
-}
-
-.menu a:hover {
-  text-decoration: underline;
-}
-
-.menu.open {
-  width: 300px;
-}
-
 .icons {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
 }
 
-@media (max-width: 768px) {
-  .ranko {
-    flex: 0 0 80px;
-    background-size: cover;
-  }
-  .name {
-    align-items: center;
-    text-align: center;
-    padding: 10px;
-  }
-  p {
-    font-size: clamp(24px, 8vw, 60px);
-  }
+.projects-tab {
+  position: fixed;
+  top: 3rem;
+  right: 2rem;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.08);
+  padding: 0.75rem 1.25rem;
+  color: white;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  border-radius: 8px 8px 8px 8px;
+  font-size: 1rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.projects-tab:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.projects-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100vw-var(--ranko-width));
+  height: 100vh;
+  background: rgba(0,0,0,0.95);
+  padding: 2rem;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 999;
+  color: white; 
+  font-family: Arial, sans-serif;
+}
+
+.projects-panel.open {
+  transform: translateX(0);
+}
+
+.projects-panel h2 {
+  margin-top: 1rem;
+  border-bottom: 1px solid white;
+  padding-bottom: 0.5rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.project-card {
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  background-image: var(--card-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255,255,255,0.05);
+
+  padding: 1rem;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75) 0%,     
+    rgba(0,0,0,0.55) 25%,    
+    rgba(0,0,0,0.25) 50%,    
+    rgba(0,0,0,0.05) 75%,    
+    rgba(0,0,0,0) 100%       
+  );
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-card * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-card:hover {
+  transform: scale(1.01);
+  background-color: rgba(255,255,255,0.1);
+}
+
+.project-card h3 {
+  margin: 0;
+  text-align: left;
+}
+
+.project-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ccc;
+  text-align: right;
+}
+
+
+.card-image {
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
