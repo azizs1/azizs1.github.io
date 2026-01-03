@@ -82,6 +82,12 @@ body {
   width: 300px;
 }
 
+.icons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
 @media (max-width: 768px) {
   .ranko {
     flex: 0 0 80px;
