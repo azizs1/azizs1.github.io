@@ -31,7 +31,7 @@ body {
 }
 
 .name {
-  width: calc(100vw-var(--ranko-width));
+  width: calc(100vw - var(--ranko-width));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,7 +80,7 @@ body {
   position: fixed;
   top: 0;
   right: 0;
-  width: calc(100vw-var(--ranko-width));
+  width: calc(100vw - var(--ranko-width));
   height: 100vh;
   background: rgba(0,0,0,0.95);
   padding: 2rem;
